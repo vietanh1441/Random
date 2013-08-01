@@ -1,4 +1,0 @@
-Random
-======
-
-Random Generate characters
