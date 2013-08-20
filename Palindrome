@@ -1,0 +1,112 @@
+/*
+ *
+ *	THIS IS A TEMPLATE FILE FOR A STANDARD C++
+ *	TO USE, FILL THE FUNCTION AND SAVE IT AS A NEW FILE
+ *
+ */
+
+#include <cstdlib>
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <ctime>
+using namespace std;
+#define fi "IN.INP"
+#define fo "OUT.OUT"
+ifstream doc(fi);
+ofstream ghi(fo);
+
+
+/* 
+ * This function take in a number and
+ * check whether that number is a 
+ * palindrom number.
+ * return true if n is palindrome
+ * false otherwise
+ * ***This function use math to solve the palindrome problem***
+ */
+bool is_palindrome_math(int val)
+{
+		int n;
+		int rn=0;
+		int stval;
+		stval=val;
+     
+        do{
+				n=val%10;
+				val=val/10;
+				rn=rn*10+n;
+    
+        }while(val>0);
+		
+		if(stval==rn)
+            return 1;
+        else
+			return 0;
+			
+		return 0;
+}
+
+
+void check_max(int palin, int& max_palin)
+{
+		if(max_palin < palin)
+		max_palin = palin;
+}
+
+
+/*
+ * This function take in a number
+ * then find the maximum number that is a palindrome
+ * that is produce from 2 number that is less than n
+ */
+int find_max_palin(int max)
+{
+		int i;
+		int j;
+		int max_palin = 0;
+		int palin;
+		for(i = max; i >= (max/10); i--){
+				for(j = max; j >= i; j--){
+						palin = i*j;
+						if (palin < max_palin)
+							break;
+						if (is_palindrome_math(palin)==1){
+							max_palin = palin;
+						}
+				}
+		}
+		return max_palin;
+}
+
+
+
+
+//Initialize function
+void init()
+{
+		 //Your code here
+		 int max;
+		 int max_palin;
+		 cin >> max;
+		 clock_t begin = clock();
+		 max_palin = find_max_palin(max);
+		 cout << max_palin << endl;
+		 clock_t end = clock();
+		 double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
+		 cout << elapsed_secs << endl;
+}
+
+
+
+int main(void)
+{
+		char y;
+		do{
+		init();
+		/* Your code here */
+		doc.close();
+		ghi.close();
+		cin >> y;} while(y=='y');
+		return 0;
+}
