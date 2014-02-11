@@ -62,72 +62,63 @@ function result_to_array($result)
 	}
 	
 	
-	function select_data($param)
+function select_data($param)
 	{
 	db_connect();
 	$posts = get_data();
 	$i = 0;
-	switch ($param) {
-    case "Time":
-        $i = 0;
-        break;
-    case "Record":
-        $i = 1;
-        break;
-    case "AWS":
-        $i = 2;
-        break;
-	case "AWD":
-        $i = 3;
-        break;
-	case "SIG":
-        $i = 4;
-        break;
-	case "Gust":
-        $i = 5;
-        break;
-	case "AvgAT":
-        $i = 6;
-        break;
-	case "MaxAT":
-        $i = 7;
-        break;
-	case "MinAT":
-        $i = 8;
-        break;
-	case "AvgAH":
-        $i = 9;
-        break;
-	case "AvgBP":
-        $i = 10;
-        break;
-	case "TotRN_5":
-        $i = 11;
-        break;
-	case "DailyRN":
-        $i = 12;
-        break;
-	case "Batt":
-        $i = 13;
-        break;
-}
-//echo $i;
-	//$posts = var_dump($posts[0][$i]);
+		switch ($param) {
+		case "Time":
+			$i = 0;
+			break;
+		case "Record":
+			$i = 1;
+			break;
+		case "AWS":
+			$i = 2;
+			break;
+		case "AWD":
+			$i = 3;
+			break;
+		case "SIG":
+			$i = 4;
+			break;
+		case "Gust":
+			$i = 5;
+			break;
+		case "AvgAT":
+			$i = 6;
+			break;
+		case "MaxAT":
+			$i = 7;
+			break;
+		case "MinAT":
+			$i = 8;
+			break;
+		case "AvgAH":
+			$i = 9;
+			break;
+		case "AvgBP":
+			$i = 10;
+			break;
+		case "TotRN_5":
+			$i = 11;
+			break;
+		case "DailyRN":
+			$i = 12;
+			break;
+		case "Batt":
+			$i = 13;
+			break;
+		}
+
 	echo $posts[0][$i] ;
-	}
+}
+
+
+
 	$param = "AWS";
 	select_data($param);
 	
-	//update();
-	//$posts = get_data();
-	//var_dump($posts);
-	//var_dump($posts);
-	//$posts = $post[0];
-	//$posts = var_dump($posts[0][1]);
-	//print_r($posts);
-	
-		//$record = var_dump($posts[1]);
-		//print_r($record);
-	//	echo $post['AWS'];
 	
 ?>
