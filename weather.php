@@ -24,12 +24,15 @@ function update()
 	db_connect();
 	exec("python ../cgi-bin/ex1.py", $output);
 	$pieces = explode(",", $output[0]);
-	$query = sprintf('INSERT INTO `weather` (`Time`, `Record`, `AWS`, `AWD`, `SIG`, `Gust`, `AvgAT`, `MaxAT`, `MinAT`, `AvgRH`, `AvgBP`, `TotRN_5`, `DailyRN`, `Batt`) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)',
-	$pieces[0],$pieces[1],$pieces[2],$pieces[3],$pieces[4],$pieces[5],$pieces[6],$pieces[7],$pieces[8],$pieces[9],$pieces[0],$pieces[11],$pieces[12],$pieces[13]);
+	$old_date_timestamp = strtotime($pieces[0]);
+	$pieces[0] = date('n/j/Y g:i', $old_date_timestamp);
+	$query = sprintf('INSERT INTO `weather` (`Time`, `Record`, `AWS`, `AWD`, `SIG`, `Gust`, `AvgAT`, `MaxAT`, `MinAT`, `AvgRH`, `AvgBP`, `TotRN_5`, `DailyRN`, `Batt`) VALUES("%s",%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)',
+	$pieces[0],$pieces[1],$pieces[2],$pieces[3],$pieces[4],$pieces[5],$pieces[6],$pieces[7],$pieces[8],$pieces[9],$pieces[10],$pieces[11],$pieces[12],$pieces[13]);
 	
-	echo $query;
+	//echo $query;
 	$result =mysql_query($query);
 }
+
 
 
 function get_data()
